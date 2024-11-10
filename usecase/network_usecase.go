@@ -33,6 +33,8 @@ func (tu *networkUsecase) GetAllNetworks(userId uint) ([]model.NetworkResponse, 
 		t := model.NetworkResponse{
 			ID:        v.ID,
 			Title:     v.Title,
+			Type:     v.Type,
+			Nationality:     v.Nationality,
 			CreatedAt: v.CreatedAt,
 			UpdatedAt: v.UpdatedAt,
 		}
@@ -49,6 +51,8 @@ func (tu *networkUsecase) GetNetworkById(userId uint, networkId uint) (model.Net
 	resNetwork := model.NetworkResponse{
 		ID:        network.ID,
 		Title:     network.Title,
+		Type:     network.Type,
+		Nationality:     network.Nationality,
 		CreatedAt: network.CreatedAt,
 		UpdatedAt: network.UpdatedAt,
 	}
@@ -65,6 +69,8 @@ func (tu *networkUsecase) CreateNetwork(network model.Network) (model.NetworkRes
 	resNetwork := model.NetworkResponse{
 		ID:        network.ID,
 		Title:     network.Title,
+		Type:     network.Type,
+		Nationality:     network.Nationality,
 		CreatedAt: network.CreatedAt,
 		UpdatedAt: network.UpdatedAt,
 	}
@@ -81,6 +87,8 @@ func (tu *networkUsecase) UpdateNetwork(network model.Network, userId uint, netw
 	resNetwork := model.NetworkResponse{
 		ID:        network.ID,
 		Title:     network.Title,
+		Type:     network.Type,
+		Nationality:     network.Nationality,
 		CreatedAt: network.CreatedAt,
 		UpdatedAt: network.UpdatedAt,
 	}

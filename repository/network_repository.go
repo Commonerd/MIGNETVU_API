@@ -46,7 +46,15 @@ func (tr *networkRepository) CreateNetwork(network *model.Network) error {
 }
 
 func (tr *networkRepository) UpdateNetwork(network *model.Network, userId uint, networkId uint) error {
-	result := tr.db.Model(network).Clauses(clause.Returning{}).Where("id=? AND user_id=?", networkId, userId).Update("title", network.Title)
+	result := tr.db.Model(network).
+		Clauses(clause.Returning{}).
+		Where("id = ? AND user_id = ?", networkId, userId).
+		Updates(map[string]interface{}{
+			"title":       network.Title,
+			"type":        network.Type,
+			"nationality": network.Nationality,
+		})
+
 	if result.Error != nil {
 		return result.Error
 	}
