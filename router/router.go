@@ -49,9 +49,9 @@ func NewRouter(uc controller.IUserController, tc controller.ITaskController, nc 
 		TokenLookup: "cookie:token",
 	}))
 	n.GET("", nc.GetAllNetworks)
-	n.GET("/:taskId", nc.GetNetworkById)
+	n.GET("/:networkId", nc.GetNetworkById)
 	n.POST("", nc.CreateNetwork)
-	n.PUT("/:taskId", nc.UpdateNetwork)
-	n.DELETE("/:taskId", nc.DeleteNetwork)
+	n.PUT("/:networkId", nc.UpdateNetwork)
+	n.DELETE("/:networkId", nc.DeleteNetwork)
 	return e
 }
