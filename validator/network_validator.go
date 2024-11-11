@@ -20,8 +20,8 @@ func (tv *networkValidator) NetworkValidate(network model.Network) error {
 	return validation.ValidateStruct(&network,
 		validation.Field(
 			&network.Title,
-			validation.Required.Error("title is required"),
-			validation.RuneLength(1, 10).Error("limited max 10 char"),
+			validation.Required.Error("name is required"),
+			validation.RuneLength(1, 50).Error("limited max 50 char"),
 		),
 	)
 }

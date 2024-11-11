@@ -7,6 +7,7 @@ type Network struct {
 	Title     string    `json:"title" gorm:"not null"`
 	Type 	  string 	`json:"type" gorm:"not null"`
 	Nationality string 	`json:"nationality"`
+	Ethnicity string 	`json:"ethnicity"`
 	CreatedAt time.Time `json:"created_at"`
 	UpdatedAt time.Time `json:"updated_at"`
 	User      User      `json:"user" gorm:"foreignKey:UserId; constraint:OnDelete:CASCADE"`
@@ -18,6 +19,7 @@ type NetworkResponse struct {
 	Title     string    `json:"title" gorm:"not null"`
 	Type 	  string 	`json:"type" gorm:"not null"`
 	Nationality string 	`json:"nationality"`
+	Ethnicity string 	`json:"ethnicity"`
 	CreatedAt time.Time `json:"created_at"`
 	UpdatedAt time.Time `json:"updated_at"`
 }

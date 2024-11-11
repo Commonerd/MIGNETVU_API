@@ -71,6 +71,7 @@ func (tu *networkUsecase) CreateNetwork(network model.Network) (model.NetworkRes
 		Title:     network.Title,
 		Type:     network.Type,
 		Nationality:     network.Nationality,
+		Ethnicity:     network.Ethnicity,
 		CreatedAt: network.CreatedAt,
 		UpdatedAt: network.UpdatedAt,
 	}
@@ -89,6 +90,7 @@ func (tu *networkUsecase) UpdateNetwork(network model.Network, userId uint, netw
 		Title:     network.Title,
 		Type:     network.Type,
 		Nationality:     network.Nationality,
+		Ethnicity:     network.Ethnicity,
 		CreatedAt: network.CreatedAt,
 		UpdatedAt: network.UpdatedAt,
 	}

@@ -53,6 +53,8 @@ func (tr *networkRepository) UpdateNetwork(network *model.Network, userId uint, 
 			"title":       network.Title,
 			"type":        network.Type,
 			"nationality": network.Nationality,
+			"ethnicity": network.Ethnicity,
+			
 		})
 
 	if result.Error != nil {
