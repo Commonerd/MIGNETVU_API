@@ -8,6 +8,8 @@ type Network struct {
 	Type 	  string 	`json:"type" gorm:"not null"`
 	Nationality string 	`json:"nationality"`
 	Ethnicity string 	`json:"ethnicity"`
+	Latitude    float64   `json:"latitude"`
+	Longitude   float64   `json:"longitude"`
 	CreatedAt time.Time `json:"created_at"`
 	UpdatedAt time.Time `json:"updated_at"`
 	User      User      `json:"user" gorm:"foreignKey:UserId; constraint:OnDelete:CASCADE"`
@@ -20,6 +22,8 @@ type NetworkResponse struct {
 	Type 	  string 	`json:"type" gorm:"not null"`
 	Nationality string 	`json:"nationality"`
 	Ethnicity string 	`json:"ethnicity"`
+	Latitude    float64   `json:"latitude"`
+	Longitude   float64   `json:"longitude"`
 	CreatedAt time.Time `json:"created_at"`
 	UpdatedAt time.Time `json:"updated_at"`
 }

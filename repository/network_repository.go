@@ -54,6 +54,8 @@ func (tr *networkRepository) UpdateNetwork(network *model.Network, userId uint, 
 			"type":        network.Type,
 			"nationality": network.Nationality,
 			"ethnicity": network.Ethnicity,
+			"latitude":    network.Latitude,
+			"longitude":   network.Longitude,
 			
 		})
 

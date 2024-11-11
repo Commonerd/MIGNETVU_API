@@ -23,5 +23,17 @@ func (tv *networkValidator) NetworkValidate(network model.Network) error {
 			validation.Required.Error("name is required"),
 			validation.RuneLength(1, 50).Error("limited max 50 char"),
 		),
+		validation.Field(
+			&network.Latitude,
+			validation.Required.Error("latitude is required"),
+			validation.Min(-90.0).Error("latitude must be >= -90"),
+			validation.Max(90.0).Error("latitude must be <= 90"),
+		),
+		validation.Field(
+			&network.Longitude,
+			validation.Required.Error("longitude is required"),
+			validation.Min(-180.0).Error("longitude must be >= -180"),
+			validation.Max(180.0).Error("longitude must be <= 180"),
+		),
 	)
 }

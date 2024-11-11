@@ -36,6 +36,8 @@ func (tu *networkUsecase) GetAllNetworks(userId uint) ([]model.NetworkResponse, 
 			Type:     v.Type,
 			Nationality:     v.Nationality,
 			Ethnicity: v.Ethnicity,
+			Latitude:    v.Latitude,
+			Longitude:   v.Longitude,
 			CreatedAt: v.CreatedAt,
 			UpdatedAt: v.UpdatedAt,
 		}
@@ -55,6 +57,8 @@ func (tu *networkUsecase) GetNetworkById(userId uint, networkId uint) (model.Net
 		Type:     network.Type,
 		Nationality:     network.Nationality,
 		Ethnicity: network.Ethnicity,
+		Latitude:    network.Latitude,
+		Longitude:   network.Longitude,
 		CreatedAt: network.CreatedAt,
 		UpdatedAt: network.UpdatedAt,
 	}
@@ -74,6 +78,8 @@ func (tu *networkUsecase) CreateNetwork(network model.Network) (model.NetworkRes
 		Type:     network.Type,
 		Nationality:     network.Nationality,
 		Ethnicity:     network.Ethnicity,
+		Latitude:    network.Latitude,
+		Longitude:   network.Longitude,
 		CreatedAt: network.CreatedAt,
 		UpdatedAt: network.UpdatedAt,
 	}
@@ -93,6 +99,8 @@ func (tu *networkUsecase) UpdateNetwork(network model.Network, userId uint, netw
 		Type:     network.Type,
 		Nationality:     network.Nationality,
 		Ethnicity:     network.Ethnicity,
+		Latitude:    network.Latitude,
+		Longitude:   network.Longitude,
 		CreatedAt: network.CreatedAt,
 		UpdatedAt: network.UpdatedAt,
 	}
