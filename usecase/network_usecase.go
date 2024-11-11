@@ -35,6 +35,7 @@ func (tu *networkUsecase) GetAllNetworks(userId uint) ([]model.NetworkResponse, 
 			Title:     v.Title,
 			Type:     v.Type,
 			Nationality:     v.Nationality,
+			Ethnicity: v.Ethnicity,
 			CreatedAt: v.CreatedAt,
 			UpdatedAt: v.UpdatedAt,
 		}
@@ -53,6 +54,7 @@ func (tu *networkUsecase) GetNetworkById(userId uint, networkId uint) (model.Net
 		Title:     network.Title,
 		Type:     network.Type,
 		Nationality:     network.Nationality,
+		Ethnicity: network.Ethnicity,
 		CreatedAt: network.CreatedAt,
 		UpdatedAt: network.UpdatedAt,
 	}
