@@ -40,6 +40,7 @@ func (tu *networkUsecase) GetAllNetworks(userId uint) ([]model.NetworkResponse, 
 			Longitude:   v.Longitude,
 			CreatedAt: v.CreatedAt,
 			UpdatedAt: v.UpdatedAt,
+			Connections: v.Connections,
 		}
 		resNetworks = append(resNetworks, t)
 	}
@@ -61,6 +62,7 @@ func (tu *networkUsecase) GetNetworkById(userId uint, networkId uint) (model.Net
 		Longitude:   network.Longitude,
 		CreatedAt: network.CreatedAt,
 		UpdatedAt: network.UpdatedAt,
+		Connections: network.Connections,
 	}
 	return resNetwork, nil
 }
@@ -82,6 +84,7 @@ func (tu *networkUsecase) CreateNetwork(network model.Network) (model.NetworkRes
 		Longitude:   network.Longitude,
 		CreatedAt: network.CreatedAt,
 		UpdatedAt: network.UpdatedAt,
+		Connections: network.Connections,
 	}
 	return resNetwork, nil
 }
@@ -103,6 +106,7 @@ func (tu *networkUsecase) UpdateNetwork(network model.Network, userId uint, netw
 		Longitude:   network.Longitude,
 		CreatedAt: network.CreatedAt,
 		UpdatedAt: network.UpdatedAt,
+		Connections: network.Connections,
 	}
 	return resNetwork, nil
 }
