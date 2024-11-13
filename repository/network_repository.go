@@ -10,6 +10,7 @@ import (
 )
 
 type INetworkRepository interface {
+	GetAllNetworksOnMap(networks *[]model.Network, userId uint) error
 	GetAllNetworks(networks *[]model.Network, userId uint) error
 	GetNetworkById(network *model.Network, userId uint, networkId uint) error
 	CreateNetwork(network *model.Network) error
@@ -23,6 +24,26 @@ type networkRepository struct {
 
 func NewNetworkRepository(db *gorm.DB) INetworkRepository {
 	return &networkRepository{db}
+}
+
+func (tr *networkRepository) GetAllNetworksOnMap(networks *[]model.Network, userId uint) error {
+	// 맵에 표시할 모든 네트워크 데이터를 조회
+	if err := tr.db.Order("created_at").Find(networks).Error; err != nil {
+		return err
+	}
+
+	// 각 네트워크의 connections JSON 데이터를 언마샬링
+	for i := range *networks {
+		network := &(*networks)[i]
+		if len(network.Connections) > 0 {
+			// JSON 데이터를 구조체로 언마샬링
+			if err := json.Unmarshal(network.Connections, &network.Connections); err != nil {
+				return fmt.Errorf("failed to unmarshal connections for network ID %d: %w", network.ID, err)
+			}
+		}
+	}
+
+	return nil
 }
 
 func (tr *networkRepository) GetAllNetworks(networks *[]model.Network, userId uint) error {

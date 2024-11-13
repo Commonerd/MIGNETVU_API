@@ -7,6 +7,7 @@ import (
 )
 
 type INetworkUsecase interface {
+	GetAllNetworksOnMap(userId uint)([]model.NetworkResponse, error)
 	GetAllNetworks(userId uint) ([]model.NetworkResponse, error)
 	GetNetworkById(userId uint, networkId uint) (model.NetworkResponse, error)
 	CreateNetwork(network model.Network) (model.NetworkResponse, error)
@@ -22,6 +23,32 @@ type networkUsecase struct {
 func NewNetworkUsecase(tr repository.INetworkRepository, tv validator.INetworkValidator) INetworkUsecase {
 	return &networkUsecase{tr, tv}
 }
+
+func (tu *networkUsecase) GetAllNetworksOnMap(userId uint) ([]model.NetworkResponse, error) {
+	networks := []model.Network{}
+	if err := tu.tr.GetAllNetworksOnMap(&networks, userId); err != nil {
+		return nil, err
+	}
+	resNetworks := []model.NetworkResponse{}
+	for _, v := range networks {
+		t := model.NetworkResponse{
+			ID:        v.ID,
+			Title:     v.Title,
+			Type:     v.Type,
+			Nationality:     v.Nationality,
+			Ethnicity: v.Ethnicity,
+			Latitude:    v.Latitude,
+			Longitude:   v.Longitude,
+			CreatedAt: v.CreatedAt,
+			UpdatedAt: v.UpdatedAt,
+			Connections: v.Connections,
+			UserId: v.UserId,
+		}
+		resNetworks = append(resNetworks, t)
+	}
+	return resNetworks, nil
+}
+
 
 func (tu *networkUsecase) GetAllNetworks(userId uint) ([]model.NetworkResponse, error) {
 	networks := []model.Network{}

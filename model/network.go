@@ -32,4 +32,5 @@ type NetworkResponse struct {
 	CreatedAt time.Time `json:"created_at"`
 	UpdatedAt time.Time `json:"updated_at"`
 	Connections   json.RawMessage `json:"connections"` // JSON 필드로 connections 저장
+	UserId    uint      `json:"user_id" gorm:"not null"`
 }

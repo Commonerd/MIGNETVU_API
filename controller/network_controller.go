@@ -11,6 +11,7 @@ import (
 )
 
 type INetworkController interface {
+	GetAllNetworksOnMap(c echo.Context) error
 	GetAllNetworks(c echo.Context) error
 	GetNetworkById(c echo.Context) error
 	CreateNetwork(c echo.Context) error
@@ -24,6 +25,18 @@ type networkController struct {
 
 func NewNetworkController(tu usecase.INetworkUsecase) INetworkController {
 	return &networkController{tu}
+}
+
+func (tc *networkController) GetAllNetworksOnMap(c echo.Context) error {
+	user := c.Get("user").(*jwt.Token)
+	claims := user.Claims.(jwt.MapClaims)
+	userId := claims["user_id"]
+
+	networksRes, err := tc.tu.GetAllNetworksOnMap(uint(userId.(float64)))
+	if err != nil {
+		return c.JSON(http.StatusInternalServerError, err.Error())
+	}
+	return c.JSON(http.StatusOK, networksRes)
 }
 
 func (tc *networkController) GetAllNetworks(c echo.Context) error {

@@ -48,6 +48,7 @@ func NewRouter(uc controller.IUserController, tc controller.ITaskController, nc 
 		SigningKey:  []byte(os.Getenv("SECRET")),
 		TokenLookup: "cookie:token",
 	}))
+	n.GET("/map", nc.GetAllNetworksOnMap)
 	n.GET("", nc.GetAllNetworks)
 	n.GET("/:networkId", nc.GetNetworkById)
 	n.POST("", nc.CreateNetwork)
