@@ -109,6 +109,7 @@ func (tr *networkRepository) UpdateNetwork(network *model.Network, userId uint, 
 			"type":        network.Type,
 			"nationality": network.Nationality,
 			"ethnicity": network.Ethnicity,
+			"migration_year": network.MigrationYear,
 			"latitude":    network.Latitude,
 			"longitude":   network.Longitude,
 			"connections": connectionsData, // JSON 데이터를 그대로 업데이트

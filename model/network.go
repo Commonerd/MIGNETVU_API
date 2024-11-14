@@ -11,6 +11,7 @@ type Network struct {
 	Type 	  string 	`json:"type" gorm:"not null"`
 	Nationality string 	`json:"nationality"`
 	Ethnicity string 	`json:"ethnicity"`
+	MigrationYear int `json:"migration_year" gorm:"not null"`
 	Latitude    float64   `json:"latitude"`
 	Longitude   float64   `json:"longitude"`
 	CreatedAt time.Time `json:"created_at"`
@@ -27,10 +28,11 @@ type NetworkResponse struct {
 	Type 	  string 	`json:"type" gorm:"not null"`
 	Nationality string 	`json:"nationality"`
 	Ethnicity string 	`json:"ethnicity"`
+	MigrationYear int `json:"migration_year" gorm:"not null"`
 	Latitude    float64   `json:"latitude"`
 	Longitude   float64   `json:"longitude"`
 	CreatedAt time.Time `json:"created_at"`
 	UpdatedAt time.Time `json:"updated_at"`
 	Connections   json.RawMessage `json:"connections"` // JSON 필드로 connections 저장
-	UserId    uint      `json:"user_id" gorm:"not null"`
+	UserId    int      `json:"user_id" gorm:"not null"`
 }

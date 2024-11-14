@@ -23,6 +23,11 @@ func (tv *networkValidator) NetworkValidate(network model.Network) error {
 			validation.Required.Error("name is required"),
 			validation.RuneLength(1, 50).Error("limited max 50 char"),
 		),
+		// validation.Field(
+		// 	&network.MigrationYear,
+		// 	validation.Required.Error("migration year is required"),
+		// 	validation.Max(time.Now()).Error("limited max is this year"),
+		// ),
 		validation.Field(
 			&network.Latitude,
 			validation.Required.Error("latitude is required"),

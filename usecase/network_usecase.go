@@ -37,12 +37,13 @@ func (tu *networkUsecase) GetAllNetworksOnMap(userId uint) ([]model.NetworkRespo
 			Type:     v.Type,
 			Nationality:     v.Nationality,
 			Ethnicity: v.Ethnicity,
+			MigrationYear: v.MigrationYear,
 			Latitude:    v.Latitude,
 			Longitude:   v.Longitude,
 			CreatedAt: v.CreatedAt,
 			UpdatedAt: v.UpdatedAt,
 			Connections: v.Connections,
-			UserId: v.UserId,
+			UserId: int(v.UserId),
 		}
 		resNetworks = append(resNetworks, t)
 	}
@@ -63,11 +64,14 @@ func (tu *networkUsecase) GetAllNetworks(userId uint) ([]model.NetworkResponse, 
 			Type:     v.Type,
 			Nationality:     v.Nationality,
 			Ethnicity: v.Ethnicity,
+			MigrationYear: v.MigrationYear,
 			Latitude:    v.Latitude,
 			Longitude:   v.Longitude,
 			CreatedAt: v.CreatedAt,
 			UpdatedAt: v.UpdatedAt,
 			Connections: v.Connections,
+			UserId: int(v.UserId),
+
 		}
 		resNetworks = append(resNetworks, t)
 	}
@@ -85,11 +89,13 @@ func (tu *networkUsecase) GetNetworkById(userId uint, networkId uint) (model.Net
 		Type:     network.Type,
 		Nationality:     network.Nationality,
 		Ethnicity: network.Ethnicity,
+		MigrationYear: network.MigrationYear,
 		Latitude:    network.Latitude,
 		Longitude:   network.Longitude,
 		CreatedAt: network.CreatedAt,
 		UpdatedAt: network.UpdatedAt,
 		Connections: network.Connections,
+		UserId: int(network.UserId),
 	}
 	return resNetwork, nil
 }
@@ -107,11 +113,13 @@ func (tu *networkUsecase) CreateNetwork(network model.Network) (model.NetworkRes
 		Type:     network.Type,
 		Nationality:     network.Nationality,
 		Ethnicity:     network.Ethnicity,
+		MigrationYear: network.MigrationYear,
 		Latitude:    network.Latitude,
 		Longitude:   network.Longitude,
 		CreatedAt: network.CreatedAt,
 		UpdatedAt: network.UpdatedAt,
 		Connections: network.Connections,
+		UserId: int(network.UserId),
 	}
 	return resNetwork, nil
 }
@@ -129,11 +137,13 @@ func (tu *networkUsecase) UpdateNetwork(network model.Network, userId uint, netw
 		Type:     network.Type,
 		Nationality:     network.Nationality,
 		Ethnicity:     network.Ethnicity,
+		MigrationYear: network.MigrationYear,
 		Latitude:    network.Latitude,
 		Longitude:   network.Longitude,
 		CreatedAt: network.CreatedAt,
 		UpdatedAt: network.UpdatedAt,
 		Connections: network.Connections,
+		UserId: int(network.UserId),
 	}
 	return resNetwork, nil
 }
